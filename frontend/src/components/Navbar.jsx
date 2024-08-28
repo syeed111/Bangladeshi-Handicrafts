@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../contexts/user.context";
 
 const Navbar = () => {
+  const { logState, logout } = useContext(UserContext);
   return (
     <div className="navbar ">
       <div className="navbar-start">
@@ -35,21 +38,33 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Bangladeshi Handicrafts</a>
+        <a className="btn btn-ghost text-2xl font-bold">
+          Bangladeshi Handicrafts
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Home</a>
+            <Link to="/" className="text-xl font-semibold">
+              Home
+            </Link>
           </li>
 
           <li>
-            <a>Blog</a>
+            <a className="text-xl font-semibold">Blog</a>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        {!logState ? (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        ) : (
+          <button className="btn" onClick={logout}>
+            Logout
+          </button>
+        )}
         <label className="flex cursor-pointer ml-2 gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"

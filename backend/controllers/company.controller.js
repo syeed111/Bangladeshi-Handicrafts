@@ -19,3 +19,13 @@ export const createCompany = async (req, res) => {
     res.status(500).json({ success: false, message: "server error" });
   }
 };
+
+export const getCompany = async (req, res) => {
+  try {
+    const Companies = await Company.find();
+    res.status(200).json({ success: true, data: Companies });
+  } catch (error) {
+    console.log("error in getProduct controller:", error.message);
+    res.status(500).json({ success: false, message: "server error" });
+  }
+};

@@ -17,3 +17,13 @@ export const createProduct = async (req, res) => {
     res.status(500).json({ success: false, message: "server error" });
   }
 };
+
+export const getProduct = async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    console.log("error in getProduct controller:", error.message);
+    res.status(500).json({ success: false, message: "server error" });
+  }
+};

@@ -5,9 +5,8 @@ import React from "react";
 const CompanyCard = ({
   company: { _id, picture, name, yearsOfOperation, numberOfProducts, likes },
 }) => {
-  console.log(_id);
   return (
-    <div className="card bg-base-100 w-70 shadow-xl" id={_id}>
+    <div className="card bg-base-100 w-70 shadow-xl" key={_id}>
       <figure>
         <img src={picture} alt="Shoes" />
       </figure>
