@@ -5,19 +5,25 @@ import React, { useContext, useEffect } from "react";
 import Banner from "../components/Banner";
 import CompanyCard from "../components/companyCard";
 import { CompanyContext } from "../contexts/company.context";
+import CompanyPage from "./CompanyPage";
+import { ProductContext } from "../contexts/product.context";
 
 const HomePage = () => {
   console.log("from homepage useContext:", useContext(CompanyContext));
   const { companyArray, fetchCompanies } = useContext(CompanyContext);
-  console.log("🚀 ~ HomePage ~ companyArray:", companyArray);
+  console.log("🚀 ~ HomePage ~ companyArray", companyArray);
+  const { fetchProducts, ProductArray } = useContext(ProductContext);
 
   useEffect(() => {
     fetchCompanies();
-  }, [fetchCompanies]);
+    fetchProducts();
+  }, [fetchCompanies, fetchProducts]);
+
+  console.log("🚀 ~ HomePage ~ ProductArray:", ProductArray);
 
   return (
     <div>
-      <Banner />
+      <Banner company={companyArray[0]} />
       <h1 className="text-4xl font-bold text-center text-gray-800 mt-5 mb-5">
         Companies
       </h1>

@@ -33,6 +33,11 @@ const CompanyContextProvider = ({ children }) => {
       console.error("Fetch failed:", error.message);
     }
   };
+
+  const getCompanyById = (companyId) => {
+    const company = companyArray.find((item) => item._id === companyId);
+    return company;
+  };
   // useEffect(() => {
   //   fetchCompanies();
   // }, []);
@@ -42,6 +47,7 @@ const CompanyContextProvider = ({ children }) => {
       value={{
         companyArray,
         fetchCompanies,
+        getCompanyById,
       }}
     >
       {children}
