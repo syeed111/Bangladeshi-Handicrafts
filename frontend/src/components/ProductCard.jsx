@@ -3,6 +3,7 @@
 import React, { useContext, useState } from "react";
 import { Star } from "lucide-react";
 import { ProductContext } from "../contexts/product.context";
+import { UserContext } from "../contexts/user.context";
 const ProductCard = ({
   Product: {
     _id,
@@ -23,6 +24,21 @@ const ProductCard = ({
     rating,
     companyId,
   };
+  const { logState } = useContext(UserContext);
+
+  const addHandler = () => {
+    if (logState) {
+      addToFav(product);
+      setFavicon(true);
+    } else alert("Please login to save Favourite!");
+  };
+
+  const removeHandler = () => {
+    if (logState) {
+      removeFromFavorite(_id);
+      setFavicon(false);
+    } else alert("Please login !");
+  };
 
   const { addToFav, removeFromFavorite } = useContext(ProductContext);
   const [favicon, setFavicon] = useState(false);
@@ -39,21 +55,11 @@ const ProductCard = ({
         <div className="flex justify-between mt-auto">
           <h2 className="text-xl font-semibold">Rating : {rating}</h2>
           {!favicon ? (
-            <button
-              onClick={() => {
-                addToFav(product);
-                setFavicon(true);
-              }}
-            >
+            <button onClick={addHandler}>
               <Star strokeWidth={1.75} />
             </button>
           ) : (
-            <button
-              onClick={() => {
-                removeFromFavorite(_id);
-                setFavicon(false);
-              }}
-            >
+            <button onClick={removeHandler}>
               <Star strokeWidth={1.75} fill="black" />
             </button>
           )}

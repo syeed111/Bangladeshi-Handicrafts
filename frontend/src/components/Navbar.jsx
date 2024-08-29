@@ -1,10 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
 const Navbar = () => {
-  const { logState, logout } = useContext(UserContext);
+  const { logState, logout, setLoginStatus } = useContext(UserContext);
+
+  useEffect(() => {
+    const rawData = localStorage.getItem("userData");
+    const userData = rawData ? JSON.parse(rawData) : {};
+    setLoginStatus(true);
+  }, [setLoginStatus]);
+
   return (
     <div className="navbar ">
       <div className="navbar-start">
@@ -34,7 +41,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a>Blog</a>
+              <Link to="/favourite">Favourites</Link>
             </li>
           </ul>
         </div>
@@ -51,7 +58,9 @@ const Navbar = () => {
           </li>
 
           <li>
-            <a className="text-xl font-semibold">Blog</a>
+            <Link to="/favourite" className="text-xl font-semibold">
+              Favourites
+            </Link>
           </li>
         </ul>
       </div>

@@ -11,6 +11,7 @@ import AuthPage from "./pages/AuthPage";
 import UserContextProvider from "./contexts/user.context";
 import ProductContextProvider from "./contexts/product.context";
 import CompanyPage from "./pages/CompanyPage";
+import FavouriteProducts from "./pages/FavouriteProducts";
 function App() {
   return (
     <div>
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<AuthPage />} />
+              <Route path="/favourite" element={<FavouriteProducts />} />
               <Route path="/business/:companyId" element={<CompanyPage />} />
             </Routes>
           </ProductContextProvider>

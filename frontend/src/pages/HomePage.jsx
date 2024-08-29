@@ -12,12 +12,14 @@ const HomePage = () => {
   console.log("from homepage useContext:", useContext(CompanyContext));
   const { companyArray, fetchCompanies } = useContext(CompanyContext);
   console.log("🚀 ~ HomePage ~ companyArray", companyArray);
-  const { fetchProducts, ProductArray } = useContext(ProductContext);
+  const { fetchProducts, ProductArray, setFavProductsFromStore } =
+    useContext(ProductContext);
 
   useEffect(() => {
     fetchCompanies();
     fetchProducts();
-  }, [fetchCompanies, fetchProducts]);
+    setFavProductsFromStore();
+  }, [fetchCompanies, fetchProducts, setFavProductsFromStore]);
 
   console.log("🚀 ~ HomePage ~ ProductArray:", ProductArray);
 

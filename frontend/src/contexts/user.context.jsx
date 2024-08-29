@@ -11,6 +11,10 @@ const UserContextProvider = ({ children }) => {
     setLogState(!logState);
   };
 
+  const setLoginStatus = (value) => {
+    setLogState(value);
+  };
+
   const login = async (email, password) => {
     try {
       const userData = {
@@ -67,6 +71,7 @@ const UserContextProvider = ({ children }) => {
   const logout = () => {
     toggle_log();
     setUser({});
+    localStorage.removeItem("userData");
   };
 
   // useEffect(() => {
@@ -82,6 +87,7 @@ const UserContextProvider = ({ children }) => {
         logState,
         toggle_log,
         user,
+        setLoginStatus,
       }}
     >
       {children}

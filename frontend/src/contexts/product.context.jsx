@@ -8,6 +8,7 @@ const ProductContextProvider = ({ children }) => {
   console.log("🚀 ~ ProductContextProvider ~ ProductArray:", ProductArray[0]);
 
   const [favProduct, setFavProduct] = useState([]);
+  console.log("🚀 ~ ProductContextProvider ~ favProduct:", favProduct);
 
   const fetchProducts = async () => {
     try {
@@ -69,6 +70,7 @@ const ProductContextProvider = ({ children }) => {
         ProductArray,
         fetchProducts,
         productsByCompany,
+        favProduct,
         addToFav,
         removeFromFavorite,
         setFavProductsFromStore,
