@@ -23,9 +23,10 @@ const HomePage = () => {
 
   console.log("🚀 ~ HomePage ~ ProductArray:", ProductArray);
 
+  const companyData = companyArray[0];
   return (
     <div>
-      <Banner company={companyArray[0]} />
+      <Banner company={companyData} />
       <h1 className="text-4xl font-bold text-center text-gray-800 mt-5 mb-5">
         Companies
       </h1>

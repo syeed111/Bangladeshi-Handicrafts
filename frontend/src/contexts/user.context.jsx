@@ -69,7 +69,7 @@ const UserContextProvider = ({ children }) => {
     }
   };
   const logout = () => {
-    toggle_log();
+    setLogState(false);
     setUser({});
     localStorage.removeItem("userData");
   };

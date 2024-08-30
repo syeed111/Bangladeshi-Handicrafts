@@ -25,7 +25,7 @@ const ProductContextProvider = ({ children }) => {
 
   const productsByCompany = (companyId) => {
     const filteredProducts = ProductArray.filter(
-      (product) => product.companyId !== companyId
+      (product) => product.companyId === companyId
     );
     return filteredProducts;
   };

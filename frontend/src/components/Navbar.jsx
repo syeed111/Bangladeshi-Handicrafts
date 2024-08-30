@@ -8,8 +8,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const rawData = localStorage.getItem("userData");
+    if (rawData) {
+      setLoginStatus(true);
+    }
+
     const userData = rawData ? JSON.parse(rawData) : {};
-    setLoginStatus(true);
   }, [setLoginStatus]);
 
   return (

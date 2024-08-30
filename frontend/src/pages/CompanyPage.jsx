@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import { ProductContext } from "../contexts/product.context";
 import ProductCard from "../components/ProductCard";
@@ -18,9 +18,7 @@ const CompanyPage = () => {
   const products = productsByCompany(companyId);
 
   console.log("🚀 ~ CompanyPage ~ products:", products);
-  {
-    /* <Banner company={company} /> */
-  }
+
   return (
     <div>
       <Banner company={company} />
@@ -28,9 +26,17 @@ const CompanyPage = () => {
         Products
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products.map((product) => (
-          <ProductCard key={product._id} Product={product} />
-        ))}
+        {products && products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product._id} Product={product} />
+          ))
+        ) : (
+          <div>
+            <h3 className="text-xl font-semibold">
+              Products are coming soon !
+            </h3>
+          </div>
+        )}
       </div>
     </div>
   );
