@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import Company from "../models/company.model.js";
 
 export const createCompany = async (req, res) => {
