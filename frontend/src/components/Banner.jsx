@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Banner = ({ company: { _id, picture, name, description } }) => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 px-20 py-30  mb-10">
       <div className="hero-content flex-col lg:flex-row">
         <img src={picture} className="max-w-sm rounded-lg shadow-2xl" />
         <div>

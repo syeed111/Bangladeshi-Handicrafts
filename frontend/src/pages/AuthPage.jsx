@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 import { useContext } from "react";
 
@@ -93,6 +94,7 @@ const AuthPage = () => {
           <button className="btn w-20 mt-5 " type="submit">
             Submit
           </button>
+          {logState && <Navigate to="/" />}
         </form>
       </div>
 

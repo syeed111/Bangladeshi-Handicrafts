@@ -1,5 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
+
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
 import companyRoutes from "./routes/company.route.js";
@@ -11,13 +13,21 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-
 app.use("/api/company", companyRoutes);
 app.use("/api/product", productRoutes);
 
-app.listen(5000, () => {
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+  });
+}
+
+app.listen(3000, () => {
   connectDB();
-  console.log("Server started at localhost 5000");
+  console.log("Server started");
 });
 
 //database: ss5clISNj6nBRhLM
