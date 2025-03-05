@@ -23,7 +23,9 @@ const CompanyContextProvider = ({ children }) => {
 
   const fetchCompanies = async () => {
     try {
-      const res = await fetch("/api/company/getCompany");
+      const res = await fetch(
+        "https://bangladeshi-handicrafts.onrender.com/company/getCompany"
+      );
       console.log("Response status:", res.status);
       const data = await res.json();
       console.log("Data received:", data);
